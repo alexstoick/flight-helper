@@ -15,6 +15,10 @@ class Leg
     @time_difference = distance_of_time_in_hours_and_minutes(@duration)
   end
 
+  def parsed_departure
+    @departure.strftime("%e %b  @  %k:%M")
+  end
+
   private
 
   def distance_of_time_in_hours_and_minutes(dist)

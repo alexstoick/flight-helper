@@ -21,11 +21,12 @@ class Itinerary
   def to_json
     hash = default_hash
     if inbound_leg
-      hash.merge(
+      hash.merge!(
         {
           inbound_carrier: inbound_carrier.name,
           inbound: "#{inbound_origin.name} - #{inbound_destination.name}",
           inbound_time: "#{inbound_leg.time_difference}",
+          inbound_departure: "#{inbound_leg.parsed_departure}",
         }
       )
     end
@@ -40,6 +41,7 @@ class Itinerary
       outbound_carrier: outbound_carrier.name,
       outbound: "#{outbound_origin.name} - #{outbound_destination.name}",
       outbound_time: "#{outbound_leg.time_difference}",
+      outbound_departure: "#{outbound_leg.parsed_departure}",
     }
   end
 end
